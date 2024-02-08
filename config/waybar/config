@@ -6,28 +6,30 @@
     "margin-bottom": 0,
     "margin-right": 10,
     "spacing": 5, // Gaps between modules (4px)
-    "modules-left": ["cpu", "memory", "hyprland/workspaces", "custom/weather"],
-    "modules-center": ["custom/spotify"],
-    "modules-right": ["tray", "backlight", "pulseaudio", "network", "battery", "clock", "custom/power-menu"],
+    "modules-left": ["custom/power-menu", "cpu", "memory", "custom/weather", "hyprland/workspaces", "hyprland/window"],
+    "modules-right": ["backlight", "pulseaudio", "network", "battery", "clock", "tray"],
     "hyprland/workspaces": {
       "format": "{icon}",
       "on-click": "activate",
       "format-icons": {
-        "1": "",
-        "2": "",
-        "3": "",
-        "4": "",
-        "5": "",
-        "urgent": "",
-        "active": "",
-        "default": ""
+        "1": "一",
+        "2": "二",
+        "3": "三",
+        "4": "四",
+        "5": "五",
+	"6": "六",
+	"7": "七",
+	"8": "八",
+	"9": "九",
+	"10": "十",
       }
     },
     "hyprland/window": {
-        "format": "{}"
+	"format": "{title}",
+    	"max-length": 50,
     },
     "tray": {
-        "spacing": 30
+        "spacing": 10
     },
     "clock": {
 	"format-alt": "<span color='#bf616a'> </span>{:%a %b %d}",

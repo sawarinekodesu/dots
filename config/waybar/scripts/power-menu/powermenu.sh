@@ -18,8 +18,8 @@ yes='וֹ Yes'
 no='תּ No'
 
 # Rofi CMD
-rofi_cmd() {
-	rofi -dmenu \
+wofi_cmd() {
+	wofi -dmenu \
 		-p "$host" \
 		-mesg "Uptime: $uptime" \
 		-theme ${dir}/${theme}.rasi
@@ -27,7 +27,7 @@ rofi_cmd() {
 
 # Confirmation CMD
 confirm_cmd() {
-	rofi -theme-str 'window {location: center; anchor: center; fullscreen: false; width: 250px;}' \
+	wofi -theme-str 'window {location: center; anchor: center; fullscreen: false; width: 250px;}' \
 		-theme-str 'mainbox {children: [ "message", "listview" ];}' \
 		-theme-str 'listview {columns: 2; lines: 1;}' \
 		-theme-str 'element-text {horizontal-align: 0.5;}' \
@@ -43,9 +43,9 @@ confirm_exit() {
 	echo -e "$yes\n$no" | confirm_cmd
 }
 
-# Pass variables to rofi dmenu
-run_rofi() {
-	echo -e "$lock\n$suspend\n$logout\n$reboot\n$shutdown" | rofi_cmd
+# Pass variables to wofi dmenu
+run_wofi() {
+	echo -e "$lock\n$suspend\n$logout\n$reboot\n$shutdown" | wofi_cmd
 }
 
 # Execute Command
@@ -79,7 +79,7 @@ run_cmd() {
 }
 
 # Actions
-chosen="$(run_rofi)"
+chosen="$(run_wofi)"
 case ${chosen} in
     $shutdown)
 		run_cmd --shutdown
