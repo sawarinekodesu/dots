@@ -46,4 +46,10 @@ require("lazy").setup({
     },
     {"folke/which-key.nvim"},
     { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+    {'terrortylor/nvim-comment'},
+    {
+        'glepnir/dashboard-nvim',
+        event = 'VimEnter',
+        dependencies = {{'nvim-tree/nvim-web-devicons'}}
+    },
 })
