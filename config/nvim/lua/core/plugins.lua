@@ -34,6 +34,16 @@ require("lazy").setup({
     {
     'nvim-telescope/telescope.nvim', tag = '0.1.5',
                                   branch = '0.1.x',
-      dependencies = { 'nvim-lua/plenary.nvim' }
-    }
+      dependencies = { 'nvim-lua/plenary.nvim' },
+    {'jose-elias-alvarez/null-ls.nvim'},
+    {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'}
+    },
+     {
+        'nvim-lualine/lualine.nvim',
+        dependencies = {
+            'nvim-tree/nvim-web-devicons', 'linrongbin16/lsp-progress.nvim'
+        }
+    },
+    {"folke/which-key.nvim"},
+    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 })
