@@ -24,7 +24,6 @@ require("lazy").setup({
 		},
 	{'nvim-treesitter/nvim-treesitter'},
 	{'neovim/nvim-lspconfig'},
-	{'navarasu/onedark.nvim'},
     {'hrsh7th/cmp-nvim-lsp'},
     {'hrsh7th/cmp-buffer'},
     {'hrsh7th/cmp-path'},
@@ -47,9 +46,32 @@ require("lazy").setup({
     {"folke/which-key.nvim"},
     { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
     {'terrortylor/nvim-comment'},
-    {
-        'glepnir/dashboard-nvim',
-        event = 'VimEnter',
-        dependencies = {{'nvim-tree/nvim-web-devicons'}}
+    {'MaximilianLloyd/ascii.nvim', 
+    dependencies = {'MunifTanjim/nui.nvim'}
     },
+    {
+    'MeanderingProgrammer/dashboard.nvim',
+    event = 'VimEnter',
+    dependencies = {
+        'nvim-tree/nvim-web-devicons',
+        { 'MaximilianLloyd/ascii.nvim', dependencies = { 'MunifTanjim/nui.nvim' } },
+    },
+    config = function()
+        require('dashboard').setup({
+            header = require('ascii').art.text.neovim.default2,
+            date_format = '%Y-%m-%d %H:%M:%S',
+            directories = {
+                '~/',
+                '~/.config',
+                '~/Projects',
+                },
+            highlight_groups = {
+                header = 'Repeat',
+                icon = 'Type',
+                directory = 'Delimiter',
+                hotkey = 'Statement',
+                },
+            })
+        end,
+    }
 })
