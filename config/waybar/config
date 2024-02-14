@@ -6,8 +6,9 @@
     "margin-bottom": 0,
     "margin-right": 15,
     "spacing": 5, // Gaps between modules (4px)
-    "modules-left": ["custom/power-menu", "cpu", "memory", "custom/weather", "hyprland/workspaces", "hyprland/window"],
-    "modules-right": ["backlight", "pulseaudio", "network", "battery", "clock", "tray"],
+    "modules-left": ["custom/power-menu", "custom/updates", "cpu", "memory", "hyprland/workspaces", "hyprland/window"],
+    "modules-center": ["cava"],
+    "modules-right": ["backlight", "pulseaudio", "network", "battery", "custom/weather", "clock", "tray"],
     "hyprland/workspaces": {
       "format": "{icon}",
       "on-click": "activate",
@@ -17,16 +18,16 @@
         "3": "三",
         "4": "四",
         "5": "五",
-	"6": "六",
-	"7": "七",
-	"8": "八",
-	"9": "九",
-	"10": "十",
+    	"6": "六",
+    	"7": "七",
+    	"8": "八",
+    	"9": "九",
+    	"10": "十",
       }
     },
     "hyprland/window": {
-	"format": "{title}",
-    	"max-length": 50,
+	"format": "{initialTitle}",
+    	"max-length": 20,
     },
     "tray": {
         "spacing": 10
@@ -38,13 +39,13 @@
     },
 
     "cpu": {
-      "interval": 10,
-      "format": "CPU {}%",
+      "interval": 5,
+      "format": "CPU {usage}%",
       "max-length": 10,
       "on-click": "",
     },
     "memory": {
-        "interval": 30,
+        "interval": 5,
         "format": "MEM {}%",
         "format-alt":" {used:0.1f}G",
         "max-length": 10,
@@ -59,7 +60,6 @@
         "format-wifi": "WF {signalStrength}%",
         "format-ethernet": " wired",
         "format-disconnected": "DISCON",
-        "on-click": "bash ~/.config/waybar/scripts/rofi-wifi-menu.sh",
         "format-disconnected": "Disconnected  ",
     },
 
@@ -103,6 +103,11 @@
       "format-full": "  {capacity}%",
       "format-icons": [" ", " ", " ", " ", " "],
     },
+
+    "cava": {
+    "cava_config": "$XDG_CONFIG_HOME/cava/config",
+    },
+
     "custom/weather": {
       "exec": "python3 ~/.config/waybar/scripts/weather.py",
       "restart-interval": 300,
@@ -120,11 +125,21 @@
     },
     "custom/power-menu": {
         "format": " <span color='#6a92d7'>⏻ </span>",
-        "on-click": "bash ~/.config/waybar/scripts/power-menu/powermenu.sh",
+        "on-click": "bash ~/.config/waybar/scripts/powermenu.sh",
     }, 
     "custom/launcher": {
         "format": " <span color='#6a92d7'> </span>",
         "on-click": "wofi",
     },
+    
+   "custom/updates": {
+       "format": "{icon} {}",
+       "return-type": "json",
+       "format-icons": {
+           "has-updates": "",
+           "updated": ""
+       },
+       "exec-if": "which waybar-module-pacman-updates",
+       "exec": "waybar-module-pacman-updates"
+   },
 }
-
